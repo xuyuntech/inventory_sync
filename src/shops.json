@@ -1,0 +1,1255 @@
+{
+    "status": 0,
+    "data": {
+        "凤祥园店": {
+            "id": "50983968",
+            "kdt_id": "19405030",
+            "name": "凤祥园店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5268016",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区龙泽路与裕华道交叉口西行50米道南（裕东楼北门）",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:44:16",
+            "updated_time": "2018-03-20 17:44:16",
+            "sid": "19405030"
+        },
+        "察院街店": {
+            "id": "50982971",
+            "kdt_id": "19405030",
+            "name": "察院街店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "",
+            "phone2": "18131566086",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "玉田县钰鼎春园小区104号楼",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:42:05",
+            "updated_time": "2018-03-20 17:42:05",
+            "sid": "19405030"
+        },
+        "复兴路店": {
+            "id": "50984428",
+            "kdt_id": "19405030",
+            "name": "复兴路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "2860826",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路南区",
+            "address": "唐山市路南区复兴路223号",
+            "county_id": "130202",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:33:43",
+            "updated_time": "2018-05-07 17:18:46",
+            "sid": "19405030"
+        },
+        "乐亭店": {
+            "id": "50983649",
+            "kdt_id": "19405030",
+            "name": "乐亭店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "8131897",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "乐亭县",
+            "address": "乐亭永安南路（老大东方南行300米路东）",
+            "county_id": "130225",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:27:34",
+            "updated_time": "2018-03-20 17:27:34",
+            "sid": "19405030"
+        },
+        "滦南店": {
+            "id": "50983373",
+            "kdt_id": "19405030",
+            "name": "滦南店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "4455666",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "滦南县",
+            "address": "唐山市滦南县南大街62号",
+            "county_id": "130224",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:18:04",
+            "updated_time": "2018-03-20 17:18:04",
+            "sid": "19405030"
+        },
+        "玉田繁荣路店": {
+            "id": "50983267",
+            "kdt_id": "19405030",
+            "name": "玉田繁荣路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5318568",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "玉田镇艺轩文化传媒凤凰春城3期",
+            "county_id": "130203",
+            "lng": "117.761609",
+            "lat": "39.896583",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:11:46",
+            "updated_time": "2018-03-20 17:11:46",
+            "sid": "19405030"
+        },
+        "南新道店": {
+            "id": "50983957",
+            "kdt_id": "19405030",
+            "name": "南新道店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "7212167",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路南区",
+            "address": "唐山市路南区南新道145号",
+            "county_id": "130202",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:03:30",
+            "updated_time": "2018-03-20 17:03:30",
+            "sid": "19405030"
+        },
+        "迁安惠泉店": {
+            "id": "50984120",
+            "kdt_id": "19405030",
+            "name": "迁安惠泉店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "7680058",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "迁安市",
+            "address": "唐山市迁安市惠泉大街广场馨园燕惠小区50-4号",
+            "county_id": "130283",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:02:26",
+            "updated_time": "2018-03-20 17:02:26",
+            "sid": "19405030"
+        },
+        "遵化龙源店": {
+            "id": "50983647",
+            "kdt_id": "19405030",
+            "name": "遵化龙源店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "6958585",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "遵化市",
+            "address": "唐山市遵化市北二环西路广播局对面龙源底商",
+            "county_id": "130281",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 17:01:25",
+            "updated_time": "2018-03-20 17:01:25",
+            "sid": "19405030"
+        },
+        "河东路店": {
+            "id": "50982299",
+            "kdt_id": "19405030",
+            "name": "河东路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5925533",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区河东路5-12号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:58:11",
+            "updated_time": "2018-03-20 16:58:11",
+            "sid": "19405030"
+        },
+        "迁安市兴安店": {
+            "id": "50983071",
+            "kdt_id": "19405030",
+            "name": "迁安市兴安店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "7635278",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "迁安市",
+            "address": "唐山市迁安市兴安大街西段北侧98号",
+            "county_id": "130283",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:55:24",
+            "updated_time": "2018-03-20 16:55:24",
+            "sid": "19405030"
+        },
+        "友谊路店": {
+            "id": "50983838",
+            "kdt_id": "19405030",
+            "name": "友谊路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "",
+            "phone2": "13363218156",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区德源里馨凤园商业楼5号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:53:35",
+            "updated_time": "2018-03-20 16:53:35",
+            "sid": "19405030"
+        },
+        "北新道店": {
+            "id": "50982365",
+            "kdt_id": "19405030",
+            "name": "北新道店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "",
+            "phone2": "18132501863",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区北新西道昌乐花苑底商11-12号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:52:34",
+            "updated_time": "2018-03-20 16:52:34",
+            "sid": "19405030"
+        },
+        "遵化店": {
+            "id": "50982769",
+            "kdt_id": "19405030",
+            "name": "遵化店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "6933188",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "遵化市",
+            "address": "唐山市遵化市华明路东人民医院北行500米",
+            "county_id": "130281",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:51:53",
+            "updated_time": "2018-03-20 16:51:53",
+            "sid": "19405030"
+        },
+        "丰润区旗舰店": {
+            "id": "50984118",
+            "kdt_id": "19405030",
+            "name": "丰润区旗舰店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5019985",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "丰润区",
+            "address": "唐山市丰润区祥润佳园曹雪芹西大街底商19号",
+            "county_id": "130208",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:50:56",
+            "updated_time": "2018-05-07 17:21:00",
+            "sid": "19405030"
+        },
+        "裕华道店": {
+            "id": "50984528",
+            "kdt_id": "19405030",
+            "name": "裕华道店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5912011",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区机场路丰源南里裕丰楼301-4-102",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:49:39",
+            "updated_time": "2018-03-20 16:49:39",
+            "sid": "19405030"
+        },
+        "长宁道店": {
+            "id": "50983366",
+            "kdt_id": "19405030",
+            "name": "长宁道店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "",
+            "phone2": "15383158755",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区长宁道9号尚品名都2期101楼5-14号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:48:21",
+            "updated_time": "2018-03-20 16:48:21",
+            "sid": "19405030"
+        },
+        "建科楼店": {
+            "id": "50983364",
+            "kdt_id": "19405030",
+            "name": "建科楼店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "",
+            "phone2": "15373501733",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区大理街道办事处郭大里建科楼305-7号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:46:09",
+            "updated_time": "2018-03-20 16:46:09",
+            "sid": "19405030"
+        },
+        "曹妃甸区文化路店": {
+            "id": "50984111",
+            "kdt_id": "19405030",
+            "name": "曹妃甸区文化路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "8712165",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "曹妃甸区",
+            "address": "唐山市唐海县垦丰大街15号",
+            "county_id": "130209",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:09:01",
+            "updated_time": "2018-05-07 17:23:10",
+            "sid": "19405030"
+        },
+        "河北一号店": {
+            "id": "50982564",
+            "kdt_id": "19405030",
+            "name": "河北一号店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5900123",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区河北路西侧",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:06:09",
+            "updated_time": "2018-03-20 16:06:09",
+            "sid": "19405030"
+        },
+        "荣华道店": {
+            "id": "50982656",
+            "kdt_id": "19405030",
+            "name": "荣华道店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5920898",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区河北三号小区荣华道",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:05:06",
+            "updated_time": "2018-03-20 16:05:06",
+            "sid": "19405030"
+        },
+        "伍家庄店": {
+            "id": "50983347",
+            "kdt_id": "19405030",
+            "name": "伍家庄店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0",
+            "phone2": "15350661780",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐山市路北区伍家庄大街高第花园底商21号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:02:58",
+            "updated_time": "2018-03-20 16:03:25",
+            "sid": "19405030"
+        },
+        "健康楼店": {
+            "id": "50983776",
+            "kdt_id": "19405030",
+            "name": "健康楼店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5345318",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "华岩路与富康道交叉口西北角唐宁广场7号底商",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 16:01:48",
+            "updated_time": "2018-03-20 16:01:48",
+            "sid": "19405030"
+        },
+        "唐丰路店": {
+            "id": "50982346",
+            "kdt_id": "19405030",
+            "name": "唐丰路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5920868",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "唐丰路45号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 15:57:25",
+            "updated_time": "2018-03-20 15:57:25",
+            "sid": "19405030"
+        },
+        "文化路店": {
+            "id": "50983011",
+            "kdt_id": "19405030",
+            "name": "文化路店",
+            "is_store": "1",
+            "is_self_fetch": "0",
+            "is_optional_self_fetch_time": "0",
+            "support_local_delivery": "0",
+            "local_delivery_scope_type": null,
+            "local_delivery_scope": null,
+            "local_delivery_polygon": null,
+            "local_delivery_start_amount": null,
+            "local_delivery_fee": null,
+            "phone1": "0315",
+            "phone2": "5920222",
+            "province": "河北省",
+            "city": "唐山市",
+            "area": "路北区",
+            "address": "文化路48号",
+            "county_id": "130203",
+            "lng": "0",
+            "lat": "0",
+            "business_hours": null,
+            "business_hours_advanced": [
+                {
+                    "open_time": "08:00",
+                    "close_time": "20:30",
+                    "weekdays": [
+                        "周一",
+                        "周二",
+                        "周三",
+                        "周四",
+                        "周五",
+                        "周六",
+                        "周日"
+                    ]
+                }
+            ],
+            "offline_business_hours": [],
+            "image": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png"
+            ],
+            "image_thumb": [
+                "https://img.yzcdn.cn/upload_files/2018/03/20/FjZ-FCkMjTt03zswL6gpjw3MohNP.png?imageView2/2/w/480/h/480/q/75/format/png"
+            ],
+            "description": "",
+            "created_time": "2018-03-20 11:21:46",
+            "updated_time": "2018-03-20 11:21:46",
+            "sid": "19405030"
+        }
+    }
+}
