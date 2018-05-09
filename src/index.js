@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Access-Token');
   next();
 });
 
@@ -186,41 +186,6 @@ app.get('/customGet', async (req, res) => {
     });
   }
 });
-app.get('/inventoryGet', (req, res) => {
-  yzInvoke('youzan.items.inventory.get', {
-    page_size: 100,
-    page_no: 1,
-  }).then((data) => {
-    res.send(data);
-  }, (err) => {
-    res.send(err);
-  });
-});
-
-app.get('/', (req, res) => {
-  const params = {
-    page_size: 100,
-    page_no: 1,
-  };
-  yzInvoke('youzan.multistore.offline.search', params).then((data) => {
-    res.send(data.list);
-  }, (err) => {
-    res.send(err);
-  });
-});
-
-app.get('/sync', async (req, res) => {
-  const page_size = 100;
-  try {
-    const data = await yzInvoke('youzan.items.inventory.get', {
-      page_no: 1,
-      page_size,
-    });
-    res.send(data);
-  } catch (err) {
-    res.send(err);
-  }
-});
 
 app.get('/exportShops', async (req, res) => {
   try {
@@ -244,19 +209,14 @@ app.get('/exportShops', async (req, res) => {
   }
 });
 
-app.post('/update', async (req, res) => {
+async function doUpdateItem({
+  shopInfo,
+  skus,
+  to,
+}) {
   try {
-    const {
-      shopInfo,
-      skus,
-      to,
-    } = req.body;
     if (!skus[0]) {
-      res.json({
-        status: 1,
-        err: 'skus length 0',
-      });
-      return;
+      throw new Error('skus length 0');
     }
     const { price, count, itemCode } = to;
     const shopCode = shopInfo.id;
@@ -285,14 +245,112 @@ app.post('/update', async (req, res) => {
       offline_id: shopCode,
       skus_with_json: JSON.stringify(skus_with_json),
     })) {
-      res.json({
-        status: 0,
+      return true;
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function doSyncAll(data = []) {
+  const pData = [];
+  data.forEach((item) => {
+    item.changeArr.forEach((change) => {
+      if (!change.err) {
+        pData.push(change);
+      }
+    });
+  });
+  let i = 0;
+  let success_num = 0;
+  const total = pData.length;
+  const errors = [];
+  while (i < total) {
+    try {
+      // await doUpdateItem(pData[i]);
+
+      const item = pData[i];
+      const {
+        num_iid, offline_id, skus, title, shopName, outer_id,
+      } = item;
+      const skus_with_json = [];
+      log.debug(`${i}: 同步单品 [${title}]`);
+      log.debug(`\t门店: ${shopName}`);
+      skus.forEach((sku) => {
+        const { sku_id, properties_name_json } = sku;
+        const pnj = JSON.parse(properties_name_json || '[]')[0];
+        const uData = { ...item.to };
+        if (pnj) {
+          const reg = pnj.v.match(/(\d{1,})[盒装|盒套餐]/);
+          if (reg && reg[1]) {
+            const num = reg[1];
+            uData.count = Math.floor(item.to.count / num);
+            uData.price = item.to.price * num;
+          }
+          log.debug(`\t规格: ${sku.properties_name_json}`);
+          log.debug(`\t\t库存变更: ${sku.quantity} -> ${uData.count}`);
+          log.debug(`\t\t价格变更: ${sku.price} -> ${uData.price}`);
+          skus_with_json.push({
+            sku_property: {
+              [pnj.k]: pnj.v,
+            },
+            sku_price: uData.price,
+            sku_quantity: uData.count,
+            sku_outer_id: outer_id,
+            sku_id,
+          });
+        }
       });
-    } else {
-      res.json({
-        status: 1,
+      const update_json = {
+        num_iid,
+        offline_id,
+        skus_with_json,
+      };
+      log.debug('\tupdate json:\n', JSON.stringify(update_json, null, '\t'));
+      log.debug('=====================');
+      success_num += 1;
+    } catch (err) {
+      log.error(`doUpdateItem ${i} error: ${err}`);
+      errors.push({
+        idx: i,
+        item: pData[i],
+        err,
       });
     }
+    i += 1;
+  }
+  return {
+    data: {
+      synced: pData,
+      total,
+      success_num,
+      failed_num: total - success_num,
+    },
+    err: errors,
+  };
+}
+
+app.post('/syncAll', async (req, res) => {
+  if (!Array.isArray(req.body)) {
+    res.json({
+      status: 1,
+      err: 'params invalid, need array',
+    });
+    return;
+  }
+  const data = await doSyncAll(req.body);
+  res.json({
+    status: 0,
+    ...data,
+  });
+});
+
+app.post('/syncOne', async (req, res) => {
+  try {
+    await doUpdateItem(req.body);
+    res.json({
+      status: 0,
+    });
   } catch (err) {
     res.json({
       status: 1,
@@ -303,8 +361,6 @@ app.post('/update', async (req, res) => {
 
 app.post('/upload', upload.single('file'), async (req, res) => {
   const { file } = req;
-  const page_size = 100;
-  const warnings = [];
   const output = [];
   try {
     // 获取网点信息
@@ -312,27 +368,16 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     log.log('shops', Object.keys(shopHash));
     // 解析 excel 库存信息，返回 map[商品编码]商品
     const hashData = await parseExcel(file);
-    // 获取库存中的商品列表
-    const inventoryItems = await yzInvoke('youzan.items.inventory.get', {
-      page_no: 1,
-      page_size,
-    }, 'GET', false);
-    const l = inventoryItems.items.length;
+    // 获取商品列表
+    const items = await getItems();
+    log.log(`获取商品 ${items.length} 个.`);
+    const l = items.length;
     for (let i = 0; i < l; i += 1) {
+      log.log(`处理 ${i} 个`);
       // item 是库存中的单个商品
-      const item = inventoryItems.items[i];
+      const item = items[i];
       // excelItem 是 [{itemCode,shopCode,count,price}]
       const excelItems = hashData[item.item_no];
-      if (!excelItems) {
-        log.log('excelItem', excelItems, item.item_no, item.title);
-      }
-      if (!excelItems) {
-        warnings.push({
-          item,
-          msg: `excel 里没找到商品编码 ${item.item_no}`,
-        });
-        continue; // eslint-disable-line
-      }
       const itemChangeLine = {
         itemInfo: {
           item_id: item.item_id,
@@ -341,38 +386,62 @@ app.post('/upload', upload.single('file'), async (req, res) => {
         },
       };
       const changeArr = [];
-      await Promise.all(excelItems.map(async (excelItem) => {
+      if (!excelItems) {
+        changeArr.push({
+          // item,
+          err: `excel 里没找到商品编码 ${item.item_no}`,
+        });
+        continue; // eslint-disable-line
+      }
+      await Promise.all(excelItems.map(async (excelItem = {}) => {
         const shopInYouzan = shopHash[(excelItem.shopName || '').trim()];
         // log.log('shopInYouzan', shopInYouzan);
-        if (excelItem && shopInYouzan) {
+        if (shopInYouzan) {
           // 网点商品
           const itemInShop = await yzInvoke('youzan.multistore.goods.sku.get', {
             num_iid: item.item_id, // 商品 id
             offline_id: shopInYouzan.id, // 网点 id
           });
           const {
-            skus = [],
+            skus = [], title, outer_id,
           } = itemInShop.item; // 规格列表
           if (skus[0]) {
-            if (excelItem.count != skus[0].quantity) { // eslint-disable-line
+            if (excelItem.count != skus[0].quantity || excelItem.price != skus[0].price) { // eslint-disable-line
               changeArr.push({
                 shopInfo: {
                   id: shopInYouzan.id,
                   sid: shopInYouzan.sid,
                   name: shopInYouzan.name,
                 },
+                outer_id,
+                shopName: shopInYouzan.name,
+                num_iid: item.item_id, // 商品 id
+                offline_id: shopInYouzan.id, // 网点 id
+                title,
                 skus,
                 to: {
                   ...excelItem,
                 },
               });
+            } else {
+              changeArr.push({
+                // excelItem,
+                // item,
+                err: '库存或者价格没有变化',
+              });
             }
+          } else {
+            changeArr.push({
+              // excelItem,
+              // item,
+              err: `商品 ${item.title} 没有 规格 信息`,
+            });
           }
         } else {
-          warnings.push({
-            excelItem,
-            item,
-            msg: 'item not found in excel',
+          changeArr.push({
+            // excelItem,
+            // item,
+            err: `门店 ${excelItem.shopName} 没找到`,
           });
         }
       }));
@@ -381,14 +450,16 @@ app.post('/upload', upload.single('file'), async (req, res) => {
         changeArr,
       });
     }
+    const syncRes = await doSyncAll(output);
     res.json({
       status: 0,
-      data: output,
-      warnings,
+      ...syncRes,
     });
   } catch (err) {
-    console.error('error', err);
-    res.send(err);
+    res.send({
+      status: 1,
+      err,
+    });
   }
 });
 
