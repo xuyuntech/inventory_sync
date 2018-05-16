@@ -3,11 +3,17 @@
 import express from 'express';
 import multer from 'multer';
 import bodyParser from 'body-parser';
-import { parseExcel, yzInvoke, getShopList, syncItem, getItems, getItemByID, updateItem } from './util';
+import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
+import { parseExcel, yzInvoke, getShopList, syncItem, getItems, getItemByID, updateItem, formatUploadData, createShop, getYouzanShopSKU } from './util';
+import log from './logger';
+import shops from '../src/shops.json';
+import outputData from './output.json';
 
 const upload = multer({ dest: 'uploads/' });
 
-const log = console;
+// const log = console;
 
 // var YZClient = new YZClient(new Sign('0e6164502b72aa7d26', 'bb2bb44a29b5a14c0378f60234d14877'));
 const app = express();
@@ -187,6 +193,29 @@ app.get('/customGet', async (req, res) => {
   }
 });
 
+app.get('/uploadShops', async (req, res) => {
+  // const shops = fs.readFileSync(path.join(__dirname, './shops.json'));
+  try {
+    const shopsHash = shops.data;
+    const results = {};
+    await Promise.all(Object.keys(shopsHash).map(async (key) => {
+      shopsHash[key].image = shopsHash[key].image[0]; // eslint-disable-line
+      shopsHash[key].business_hours_advanced = JSON.stringify(shopsHash[key].business_hours_advanced); // eslint-disable-line
+      results[key] = await createShop(_.pick(
+        shopsHash[key],
+        'address', 'area', 'business_hours_advanced', 'city', 'county_id', 'description', 'image', 'is_optional_self_fetch_time',
+        'is_self_fetch', 'is_store', 'lat', 'lng', 'name', 'offline_business_hours', 'phone1', 'phone2', 'province', 'support_local_delivery',
+      ));
+    }));
+    res.json(results);
+  } catch (err) {
+    res.json({
+      status: 1,
+      err,
+    });
+  }
+});
+
 app.get('/exportShops', async (req, res) => {
   try {
     const shopList = await getShopList();
@@ -209,252 +238,185 @@ app.get('/exportShops', async (req, res) => {
   }
 });
 
-async function doUpdateItem({
-  shopInfo,
-  skus,
-  to,
-}) {
-  try {
-    if (!skus[0]) {
-      throw new Error('skus length 0');
-    }
-    const { price, count, itemCode } = to;
-    const shopCode = shopInfo.id;
-    let itemID = 0;
-    const skus_with_json = [];
-    skus.forEach((sku) => {
-      const sku_json = {};
-      const { num_iid, sku_id, properties_name_json = '{}' } = sku;
-      const properties = JSON.parse(properties_name_json);
-      itemID = num_iid;
-      if (properties[0]) {
-        const { k, v } = properties[0];
-        sku_json.sku_property = {
-          [k]: v,
-        };
-        sku_json.sku_price = price;
-        sku_json.sku_quantity = count;
-        sku_json.sku_outer_id = itemCode;
-        sku_json.sku_id = sku_id;
-      }
-      skus_with_json.push(sku_json);
-    });
-
-    if (await syncItem({
-      num_iid: itemID,
-      offline_id: shopCode,
-      skus_with_json: JSON.stringify(skus_with_json),
-    })) {
-      return true;
-    }
-  } catch (err) {
-    throw err;
-  }
-}
-
-async function doSyncAll(data = []) {
-  const pData = [];
-  data.forEach((item) => {
-    item.changeArr.forEach((change) => {
-      if (!change.err) {
-        pData.push(change);
-      }
-    });
-  });
-  let i = 0;
-  let success_num = 0;
-  const total = pData.length;
-  const errors = [];
-  while (i < total) {
-    try {
-      // await doUpdateItem(pData[i]);
-
-      const item = pData[i];
-      const {
-        num_iid, offline_id, skus, title, shopName, outer_id,
-      } = item;
-      const skus_with_json = [];
-      log.debug(`${i}: 同步单品 [${title}]`);
-      log.debug(`\t门店: ${shopName}`);
-      skus.forEach((sku) => {
-        const { sku_id, properties_name_json } = sku;
-        const pnj = JSON.parse(properties_name_json || '[]')[0];
-        const uData = { ...item.to };
-        if (pnj) {
-          const reg = pnj.v.match(/(\d{1,})[盒装|盒套餐]/);
-          if (reg && reg[1]) {
-            const num = reg[1];
-            uData.count = Math.floor(item.to.count / num);
-            uData.price = item.to.price * num;
-          }
-          log.debug(`\t规格: ${sku.properties_name_json}`);
-          log.debug(`\t\t库存变更: ${sku.quantity} -> ${uData.count}`);
-          log.debug(`\t\t价格变更: ${sku.price} -> ${uData.price}`);
-          skus_with_json.push({
-            sku_property: {
-              [pnj.k]: pnj.v,
-            },
-            sku_price: uData.price,
-            sku_quantity: uData.count,
-            sku_outer_id: outer_id,
-            sku_id,
-          });
-        }
-      });
-      const update_json = {
-        num_iid,
-        offline_id,
-        skus_with_json,
-      };
-      log.debug('\tupdate json:\n', JSON.stringify(update_json, null, '\t'));
-      log.debug('=====================');
-      success_num += 1;
-    } catch (err) {
-      log.error(`doUpdateItem ${i} error: ${err}`);
-      errors.push({
-        idx: i,
-        item: pData[i],
-        err,
-      });
-    }
-    i += 1;
-  }
-  return {
-    data: {
-      synced: pData,
-      total,
-      success_num,
-      failed_num: total - success_num,
-    },
-    err: errors,
-  };
-}
-
+// 负责将upload 获得的信息解析为更方便展示以及 youzan sync 的数据格式
 app.post('/syncAll', async (req, res) => {
-  if (!Array.isArray(req.body)) {
+  log.debug('syncAll body');
+  const { item_no, update_jsons = [] } = req.body;
+  if (!item_no) {
     res.json({
       status: 1,
-      err: 'params invalid, need array',
+      err: 'need item_no',
     });
     return;
   }
-  const data = await doSyncAll(req.body);
+  if (!Array.isArray(update_jsons) || !update_jsons.length) {
+    res.json({
+      status: 1,
+      err: 'need update_jsons',
+    });
+    return;
+  }
+  const data = await Promise.all(update_jsons.map(async (item) => {
+    const { num_iid, offline_id, skus_with_json } = item;
+    try {
+      return {
+        success: await syncItem({
+          num_iid,
+          offline_id,
+          skus_with_json: JSON.stringify(skus_with_json),
+        }),
+      };
+    } catch (err) {
+      return {
+        success: false,
+        err,
+      };
+    }
+  }));
+  log.debug('syncAll ---------------');
+  log.debug('syncAll data', data);
+  let success = true;
+  data.forEach((item) => {
+    if (!item.success) {
+      success = false;
+    }
+  });
   res.json({
-    status: 0,
-    ...data,
+    item_no,
+    status: success ? 0 : 1,
+    data,
   });
 });
 
-app.post('/syncOne', async (req, res) => {
-  try {
-    await doUpdateItem(req.body);
-    res.json({
-      status: 0,
-    });
-  } catch (err) {
-    res.json({
-      status: 1,
-      err,
-    });
-  }
-});
 
-app.post('/upload', upload.single('file'), async (req, res) => {
-  const { file } = req;
+async function dealWithOneItem(shopHash, hashData, items, key) {
   const output = [];
   try {
-    // 获取网点信息
-    const shopHash = await getShopList();
-    log.log('shops', Object.keys(shopHash));
-    // 解析 excel 库存信息，返回 map[商品编码]商品
-    const hashData = await parseExcel(file);
-    // 获取商品列表
-    const items = await getItems();
-    log.log(`获取商品 ${items.length} 个.`);
-    const l = items.length;
-    for (let i = 0; i < l; i += 1) {
-      log.log(`处理 ${i} 个`);
-      // item 是库存中的单个商品
-      const item = items[i];
-      // excelItem 是 [{itemCode,shopCode,count,price}]
-      const excelItems = hashData[item.item_no];
-      const itemChangeLine = {
-        itemInfo: {
-          item_id: item.item_id,
-          item_no: item.item_no,
-          title: item.title,
-        },
-      };
-      const changeArr = [];
-      if (!excelItems) {
-        changeArr.push({
-          // item,
-          err: `excel 里没找到商品编码 ${item.item_no}`,
+    const item = items[key];
+    if (!item) {
+      return output;
+    }
+    // 根据 youzan 里的商品编码获取 excel 里对应的记录集合 [{itemCode,shopCode,count,price}]
+    // 也就是同一个商品在每家门店的库存价格记录
+    const excelItems = hashData[item.item_no];
+    const itemChangeLine = {
+      itemInfo: {
+        item_id: item.item_id,
+        item_no: item.item_no,
+        title: item.title,
+      },
+    };
+    const changeArr = [];
+    if (!excelItems) {
+      changeArr.push({
+        // item,
+        err: `excel 里没找到商品编码 ${item.item_no}`,
+      });
+      // continue; // eslint-disable-line
+      return output.concat(await dealWithOneItem(shopHash, hashData, items, key + 1));
+    }
+    console.log('线下库存商品编号: ', item.item_no, excelItems.length);
+    // 遍历一个 sku 每家门店，获取 youzan 里对应的门店与SKU的商品信息
+    // for (let i = 0; i < excelItems.length; i += 1) {
+    //   const excelItem = excelItems[i];
+
+    // }
+    await Promise.all(excelItems.map(async (excelItem = {}) => {
+      const shopInYouzan = shopHash[(excelItem.shopName || '').trim()];
+      if (shopInYouzan) {
+        // 网点商品
+        // console.log('获取网点商品 %s -> %s', shopInYouzan.name, item.title);
+        // const itemInShop = await yzInvoke('youzan.multistore.goods.sku.get', {
+        //   num_iid: item.item_id, // 商品 id
+        //   offline_id: shopInYouzan.id, // 网点 id
+        // });
+        const itemInShop = await getYouzanShopSKU({
+          num_iid: item.item_id, // 商品 id
+          offline_id: shopInYouzan.id, // 网点 id
         });
-        continue; // eslint-disable-line
-      }
-      await Promise.all(excelItems.map(async (excelItem = {}) => {
-        const shopInYouzan = shopHash[(excelItem.shopName || '').trim()];
-        // log.log('shopInYouzan', shopInYouzan);
-        if (shopInYouzan) {
-          // 网点商品
-          const itemInShop = await yzInvoke('youzan.multistore.goods.sku.get', {
-            num_iid: item.item_id, // 商品 id
-            offline_id: shopInYouzan.id, // 网点 id
-          });
-          const {
-            skus = [], title, outer_id,
-          } = itemInShop.item; // 规格列表
-          if (skus[0]) {
-            if (excelItem.count != skus[0].quantity || excelItem.price != skus[0].price) { // eslint-disable-line
-              changeArr.push({
-                shopInfo: {
-                  id: shopInYouzan.id,
-                  sid: shopInYouzan.sid,
-                  name: shopInYouzan.name,
-                },
-                outer_id,
-                shopName: shopInYouzan.name,
-                num_iid: item.item_id, // 商品 id
-                offline_id: shopInYouzan.id, // 网点 id
-                title,
-                skus,
-                to: {
-                  ...excelItem,
-                },
-              });
-            } else {
-              changeArr.push({
-                // excelItem,
-                // item,
-                err: '库存或者价格没有变化',
-              });
-            }
+        const {
+          skus = [], title, outer_id,
+        } = itemInShop.item; // 规格列表
+        // 每件商品可能有多个 sku 规格，默认第一个 sku 是基础规格,也就是单价
+        if (skus[0]) {
+          if (excelItem.count != skus[0].quantity || excelItem.price != skus[0].price) { // eslint-disable-line
+            changeArr.push({
+              shopInfo: {
+                id: shopInYouzan.id,
+                sid: shopInYouzan.sid,
+                name: shopInYouzan.name,
+              },
+              outer_id,
+              shopName: shopInYouzan.name,
+              num_iid: item.item_id, // 商品 id
+              offline_id: shopInYouzan.id, // 网点 id
+              title,
+              skus,
+              to: {
+                ...excelItem,
+              },
+            });
           } else {
             changeArr.push({
               // excelItem,
               // item,
-              err: `商品 ${item.title} 没有 规格 信息`,
+              err: '库存或者价格没有变化',
             });
           }
         } else {
           changeArr.push({
             // excelItem,
             // item,
-            err: `门店 ${excelItem.shopName} 没找到`,
+            err: `商品 ${item.title} 没有 规格 信息`,
           });
         }
-      }));
-      output.push({
-        ...itemChangeLine,
-        changeArr,
-      });
-    }
-    const syncRes = await doSyncAll(output);
+      } else {
+        changeArr.push({
+          // excelItem,
+          // item,
+          err: `门店 ${excelItem.shopName} 没找到`,
+        });
+      }
+    }));
+    console.log('商品 %s 处理完毕 -----------', item.item_no);
+    output.push({
+      ...itemChangeLine,
+      changeArr,
+    });
+    return output.concat(await dealWithOneItem(shopHash, hashData, items, key + 1));
+  } catch (err) {
+    console.log('dealWithOneItem error: ', err);
+    return output;
+  }
+}
+app.post('/upload', upload.single('file'), async (req, res) => {
+  // const outputData = JSON.stringify(outputStr);
+  res.json({
+    status: 0,
+    ...outputData,
+  });
+});
+app.post('/upload1', upload.single('file'), async (req, res) => {
+  const { file } = req;
+  // const output = [];
+  try {
+    // 获取网点信息
+    const shopHash = await getShopList();
+    log.info('shops', Object.keys(shopHash));
+    // 解析 excel 库存信息，返回 map[商品编码]商品
+    const hashData = await parseExcel(file);
+    // 获取商品列表
+    const items = await getItems();
+    const output = await dealWithOneItem(shopHash, hashData, items, 0);
+    const syncRes = await formatUploadData(output);
     res.json({
       status: 0,
       ...syncRes,
     });
+    // for (let i = 0; i < l; i += 1) {
+    //   // item 是库存中的单个商品
+    //   const item = items[i];
+    // }
   } catch (err) {
     res.send({
       status: 1,
@@ -465,5 +427,5 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
 const server = app.listen(3001, () => {
   const address = server.address();
-  log.log('InventorySycn listening at http://%s:%s', address.address, address.port);
+  console.log('InventorySync listening at http://%s:%s', address.address, address.port);
 });
